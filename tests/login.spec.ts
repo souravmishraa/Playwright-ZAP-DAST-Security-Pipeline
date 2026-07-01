@@ -44,7 +44,8 @@ test.describe('Juice Shop login', () => {
 
     await expect(loginBtn).toBeEnabled();
     await loginBtn.click();
-
+await page.waitForTimeout(3000);
+console.log(await page.url());
     await expect(page).not.toHaveURL(/.*#\/login/);
     
     const accountMenu = page.locator('#navbarAccount');

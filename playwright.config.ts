@@ -8,7 +8,8 @@ export default defineConfig({
   },
   reporter: [['list']],
   use: {
-    baseURL: 'http://localhost:3000',
+    // baseURL: 'http://localhost:3000',
+    baseURL: 'https://preview.owasp-juice.shop/#/',
     headless: false,
     launchOptions: {
       slowMo: 800,
