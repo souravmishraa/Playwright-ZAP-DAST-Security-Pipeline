@@ -21,7 +21,7 @@ jobs:
         with:
           # Target URL to scan 
           # target: 'http://localhost:3000' 
-          target:'https://preview.owasp-juice.shop/#/'
+         target: 'https://preview.owasp-juice.shop/#/'
           # suppress false positives and customize policies
           rules_file_name: 'zap.conf'
           # Fail the build if vulnerabilities of high severity 
