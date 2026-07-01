@@ -12,6 +12,7 @@ jobs:
   zap_scan:
     runs-on: ubuntu-latest
     name: Run DAST Scan
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -19,12 +20,7 @@ jobs:
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.12.0
         with:
-          # Target URL to scan 
-          # target: 'http://localhost:3000' 
-         target: 'https://preview.owasp-juice.shop/#/'
-          # suppress false positives and customize policies
-          rules_file_name: 'zap.conf'
-          # Fail the build if vulnerabilities of high severity 
+          target: 'https://preview.owasp-juice.shop/'
+          rules_file_name: 'rules.tsv'
           fail_action: true
-          # Issue title for the created GitHub issue
           issue_title: 'DAST Vulnerabilities Found'
