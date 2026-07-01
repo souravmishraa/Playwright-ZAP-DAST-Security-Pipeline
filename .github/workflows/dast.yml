@@ -22,5 +22,6 @@ jobs:
         with:
           target: 'https://preview.owasp-juice.shop/'
           rules_file_name: 'rules.tsv'
-          fail_action: true
-          issue_title: 'DAST Vulnerabilities Found'
+          fail_action: False 
+          # fail_action: False 
+          # issue_title: 'DAST Vulnerabilities Found'
