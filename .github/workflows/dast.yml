@@ -1,0 +1,29 @@
+name: DAST Scan with OWASP ZAP
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Run DAST Scan
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.12.0
+        with:
+          # Target URL to scan 
+          target: 'http://localhost:3000' 
+          # suppress false positives and customize policies
+          rules_file_name: 'zap.conf'
+          # Fail the build if vulnerabilities of high severity 
+          fail_action: true
+          # Issue title for the created GitHub issue
+          issue_title: 'DAST Vulnerabilities Found'
