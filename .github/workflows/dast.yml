@@ -23,7 +23,7 @@ jobs:
 
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.12.0
-        uses: zaproxy/action-full-scan@v0.12.0
+     
 
 #  OWASP ZAP Action use 
 
@@ -49,6 +49,6 @@ jobs:
 # WARN
 
 # INFO
-          fail_action: false
-          # fail_action: true
+          # fail_action: false
+          fail_action: true
           issue_title: 'DAST Vulnerabilities Found'

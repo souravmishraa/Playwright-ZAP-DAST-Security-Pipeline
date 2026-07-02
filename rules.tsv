@@ -35,6 +35,7 @@
 40028	FAIL	Server Side Template Injection (SSTI)
 40017	FAIL	Cross Site Request Forgery (CSRF)
 
+
 10038	WARN	Content Security Policy (CSP) Header Not Set
 10020	WARN	X-Frame-Options Header Not Set
 10021	WARN	X-Content-Type-Options Header Missing
@@ -49,6 +50,9 @@
 
 
 # False-Positive Suppression Rules:
-10096	IGNORE	Timestamp Disclosure - Unix
-10027	IGNORE	Information Disclosure - Suspicious Comments
-10063	IGNORE	User Agent Fuzzer
+# 10096	IGNORE	Timestamp Disclosure - Unix
+# 10027	IGNORE	Information Disclosure - Suspicious Comments
+# 10063	IGNORE	User Agent Fuzzer
+10063	IGNORE	Modern Web Application
+10104	IGNORE	User Agent Fuzzer
+10015	IGNORE	Re-examine Cache-control Directives
