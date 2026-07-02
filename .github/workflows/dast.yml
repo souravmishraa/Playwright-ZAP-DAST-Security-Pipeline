@@ -23,9 +23,32 @@ jobs:
 
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.12.0
+        uses: zaproxy/action-full-scan@v0.12.0
+
+#  OWASP ZAP Action use 
+
+#  internally
+# ZAP Download
+# Docker Container Start
+# Spider
+# Passive Scan
+# Active Scan
+# Report Generate
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://preview.owasp-juice.shop/'
           rules_file_name: 'rules.tsv'
+# Rule Enable
+
+# Rule Disable
+
+# Ignore
+
+# FAIL
+
+# WARN
+
+# INFO
           fail_action: false
+          # fail_action: true
           issue_title: 'DAST Vulnerabilities Found'
