@@ -1,58 +1,88 @@
-# OWASP ZAP Policy and Suppression Configuration
+# # OWASP ZAP Policy and Suppression Configuration
 
-# # 1. Customized Scan Policies
-# # specific rules to WARN instead of FAIL if they are lower priority for your app
-# 10038	WARN	Content Security Policy (CSP) Header Not Set
-# 10015	WARN	Incomplete or No Cache-control Header Set
+# # # 1. Customized Scan Policies
+# # # specific rules to WARN instead of FAIL if they are lower priority for your app
+# # 10038	WARN	Content Security Policy (CSP) Header Not Set
+# # 10015	WARN	Incomplete or No Cache-control Header Set
 
-# # 2. False-Positive Suppression Rules
-# # Ignore specific rules that might be generating false positives in your environment
-# 10096	IGNORE	Timestamp Disclosure - Unix
-# 10027	IGNORE	Information Disclosure - Suspicious Comments
+# # # 2. False-Positive Suppression Rules
+# # # Ignore specific rules that might be generating false positives in your environment
+# # 10096	IGNORE	Timestamp Disclosure - Unix
+# # 10027	IGNORE	Information Disclosure - Suspicious Comments
 
-# # 3. Severity-Based Quality Gates
-# # Ensure high-risk vulnerabilities explicitly fail the build
+# # # 3. Severity-Based Quality Gates
+# # # Ensure high-risk vulnerabilities explicitly fail the build
+# # 40018	FAIL	SQL Injection
+# # 40012	FAIL	Cross Site Scripting (Reflected)
+# # 40014	FAIL	Cross Site Scripting (Persistent)
+# # 10038	WARN	Content Security Policy (CSP) Header Not Set
+# # 10015	WARN	Incomplete or No Cache-control Header Set
+# # 10096	IGNORE	Timestamp Disclosure - Unix
+# # 10027	IGNORE	Information Disclosure - Suspicious Comments
+# # 40018	FAIL	SQL Injection
+# # 40012	FAIL	Cross Site Scripting (Reflected)
+# # 40014	FAIL	Cross Site Scripting (Persistent)
+# # RuleID	Action	Rule Name
+
 # 40018	FAIL	SQL Injection
 # 40012	FAIL	Cross Site Scripting (Reflected)
 # 40014	FAIL	Cross Site Scripting (Persistent)
+# 40016	FAIL	Cross Site Scripting (DOM Based)
+# 40026	FAIL	Path Traversal
+# 40019	FAIL	Command Injection
+# 40020	FAIL	Remote Code Execution
+# 90023	FAIL	XML External Entity (XXE)
+# 40028	FAIL	Server Side Template Injection (SSTI)
+# 40017	FAIL	Cross Site Request Forgery (CSRF)
+
+
 # 10038	WARN	Content Security Policy (CSP) Header Not Set
-# 10015	WARN	Incomplete or No Cache-control Header Set
-# 10096	IGNORE	Timestamp Disclosure - Unix
-# 10027	IGNORE	Information Disclosure - Suspicious Comments
-# 40018	FAIL	SQL Injection
-# 40012	FAIL	Cross Site Scripting (Reflected)
-# 40014	FAIL	Cross Site Scripting (Persistent)
-# RuleID	Action	Rule Name
-
-40018	FAIL	SQL Injection
-40012	FAIL	Cross Site Scripting (Reflected)
-40014	FAIL	Cross Site Scripting (Persistent)
-40016	FAIL	Cross Site Scripting (DOM Based)
-40026	FAIL	Path Traversal
-40019	FAIL	Command Injection
-40020	FAIL	Remote Code Execution
-90023	FAIL	XML External Entity (XXE)
-40028	FAIL	Server Side Template Injection (SSTI)
-40017	FAIL	Cross Site Request Forgery (CSRF)
+# 10020	WARN	X-Frame-Options Header Not Set
+# 10021	WARN	X-Content-Type-Options Header Missing
+# 10016	WARN	Web Browser XSS Protection Not Enabled
+# 10015	WARN	Incomplete or No Cache-Control Header Set
+# 10035	WARN	Strict-Transport-Security Header Not Set
+# 10036	WARN	Server Leaks Version Information
+# 10010	WARN	Cookie No HttpOnly Flag
+# 10011	WARN	Cookie Without Secure Flag
+# 10054	WARN	Cookie Without SameSite Attribute
+# 10098	WARN	Cross-Domain Misconfiguration
 
 
-10038	WARN	Content Security Policy (CSP) Header Not Set
-10020	WARN	X-Frame-Options Header Not Set
-10021	WARN	X-Content-Type-Options Header Missing
-10016	WARN	Web Browser XSS Protection Not Enabled
-10015	WARN	Incomplete or No Cache-Control Header Set
-10035	WARN	Strict-Transport-Security Header Not Set
-10036	WARN	Server Leaks Version Information
-10010	WARN	Cookie No HttpOnly Flag
-10011	WARN	Cookie Without Secure Flag
-10054	WARN	Cookie Without SameSite Attribute
-10098	WARN	Cross-Domain Misconfiguration
+# # False-Positive Suppression Rules:
+#  10096	IGNORE	Timestamp Disclosure - Unix
+# # 10027	IGNORE	Information Disclosure - Suspicious Comments
+# # 10063	IGNORE	User Agent Fuzzer
+# 10063	IGNORE	Modern Web Application
+# 10104	IGNORE	User Agent Fuzzer
+# 10015	IGNORE	Re-examine Cache-control Directives
 
 
-# False-Positive Suppression Rules:
-# 10096	IGNORE	Timestamp Disclosure - Unix
-# 10027	IGNORE	Information Disclosure - Suspicious Comments
-# 10063	IGNORE	User Agent Fuzzer
-10063	IGNORE	Modern Web Application
-10104	IGNORE	User Agent Fuzzer
-10015	IGNORE	Re-examine Cache-control Directives
+
+# High Severity - Fail
+40018 FAIL SQL Injection
+40012 FAIL Cross Site Scripting (Reflected)
+40014 FAIL Cross Site Scripting (Persistent)
+40016 FAIL Cross Site Scripting (DOM Based)
+40019 FAIL Command Injection
+40020 FAIL Remote Code Execution
+40026 FAIL Path Traversal
+40028 FAIL Server Side Template Injection
+90023 FAIL XML External Entity
+40017 FAIL Cross Site Request Forgery
+
+# Medium/Configuration - Warn
+10038 WARN Content Security Policy (CSP) Header Not Set
+10020 WARN X-Frame-Options Header Not Set
+10021 WARN X-Content-Type-Options Header Missing
+10035 WARN Strict-Transport-Security Header Not Set
+10036 WARN Server Leaks Version Information
+10010 WARN Cookie No HttpOnly Flag
+10011 WARN Cookie Without Secure Flag
+10054 WARN Cookie Without SameSite Attribute
+10098 WARN Cross-Domain Misconfiguration
+
+# Informational - Ignore
+10096 IGNORE Timestamp Disclosure - Unix
+10063 IGNORE Modern Web Application
+10104 IGNORE User Agent Fuzzer

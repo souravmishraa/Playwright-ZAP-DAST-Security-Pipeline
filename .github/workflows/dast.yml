@@ -34,21 +34,29 @@ jobs:
 # Passive Scan
 # Active Scan
 # Report Generate
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          target: 'https://preview.owasp-juice.shop/'
-          rules_file_name: 'rules.tsv'
-# Rule Enable
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           target: 'https://preview.owasp-juice.shop/'
+#           rules_file_name: 'rules.tsv'
+# # Rule Enable
 
-# Rule Disable
+# # Rule Disable
 
-# Ignore
+# # Ignore
 
-# FAIL
+# # FAIL
 
-# WARN
+# # WARN
 
-# INFO
-          # fail_action: false
-          fail_action: true
-          issue_title: 'DAST Vulnerabilities Found'
+# # INFO
+#           # fail_action: false
+#           fail_action: true
+#           issue_title: 'DAST Vulnerabilities Found'
+with:
+  token: ${{ secrets.GITHUB_TOKEN }}
+  target: 'https://preview.owasp-juice.shop/'
+  rules_file_name: 'rules.tsv'
+  fail_action: true
+  cmd_options: >
+    -config spider.maxDuration=3
+    -config spider.maxDepth=5
