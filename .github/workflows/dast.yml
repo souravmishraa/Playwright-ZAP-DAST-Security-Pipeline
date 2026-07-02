@@ -1,3 +1,65 @@
+# name: DAST Scan with OWASP ZAP
+
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+#   schedule:
+#     - cron: '0 0 * * *'
+
+# permissions:
+#   issues: write
+#   contents: read
+
+# jobs:
+#   zap_scan:
+#     runs-on: ubuntu-latest
+#     name: Run DAST Scan
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+
+#       - name: ZAP Full Scan
+#         uses: zaproxy/action-full-scan@v0.12.0
+     
+
+# #  OWASP ZAP Action use 
+
+# #  internally
+# # ZAP Download
+# # Docker Container Start
+# # Spider
+# # Passive Scan
+# # Active Scan
+# # Report Generate
+# #         with:
+# #           token: ${{ secrets.GITHUB_TOKEN }}
+# #           target: 'https://preview.owasp-juice.shop/'
+# #           rules_file_name: 'rules.tsv'
+# # # Rule Enable
+
+# # # Rule Disable
+
+# # # Ignore
+
+# # # FAIL
+
+# # # WARN
+
+# # # INFO
+# #           # fail_action: false
+# #           fail_action: true
+# #           issue_title: 'DAST Vulnerabilities Found'
+# with:
+#   token: ${{ secrets.GITHUB_TOKEN }}
+#   target: 'https://preview.owasp-juice.shop/'
+#   rules_file_name: 'rules.tsv'
+#   fail_action: true
+#   cmd_options: >
+#     -config spider.maxDuration=3
+#     -config spider.maxDepth=5
 name: DAST Scan with OWASP ZAP
 
 on:
@@ -21,42 +83,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # OWASP ZAP Action internally performs:
+      # 1. Download ZAP
+      # 2. Start Docker Container
+      # 3. Spider (Crawling)
+      # 4. Passive Scan
+      # 5. Active Scan
+      # 6. Generate Report
+
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.12.0
-     
-
-#  OWASP ZAP Action use 
-
-#  internally
-# ZAP Download
-# Docker Container Start
-# Spider
-# Passive Scan
-# Active Scan
-# Report Generate
-#         with:
-#           token: ${{ secrets.GITHUB_TOKEN }}
-#           target: 'https://preview.owasp-juice.shop/'
-#           rules_file_name: 'rules.tsv'
-# # Rule Enable
-
-# # Rule Disable
-
-# # Ignore
-
-# # FAIL
-
-# # WARN
-
-# # INFO
-#           # fail_action: false
-#           fail_action: true
-#           issue_title: 'DAST Vulnerabilities Found'
-with:
-  token: ${{ secrets.GITHUB_TOKEN }}
-  target: 'https://preview.owasp-juice.shop/'
-  rules_file_name: 'rules.tsv'
-  fail_action: true
-  cmd_options: >
-    -config spider.maxDuration=3
-    -config spider.maxDepth=5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'https://preview.owasp-juice.shop/'
+          rules_file_name: 'rules.tsv'
+          fail_action: true
+          issue_title: 'DAST Vulnerabilities Found'
+          cmd_options: >
+            -config spider.maxDuration=3
+            -config spider.maxDepth=5
