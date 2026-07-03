@@ -77,7 +77,7 @@
 
 
 # False-Positive Suppression Rules:
- 10096	IGNORE	Timestamp Disclosure - Unix
+10096	IGNORE	Timestamp Disclosure - Unix
 # 10027	IGNORE	Information Disclosure - Suspicious Comments
 # 10063	IGNORE	User Agent Fuzzer
 10063	IGNORE	Modern Web Application
