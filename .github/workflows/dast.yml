@@ -20,10 +20,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
+      # - name: Run OWASP ZAP Baseline Scan
+      #   uses: zaproxy/action-baseline@v0.14.0
       - name: ZAP Full Scan
-        # uses: zaproxy/action-full-scan@v0.12.0
-        uses: zaproxy/action-baseline@v0.14.0
+         uses: zaproxy/action-full-scan@v0.12.0
+        # uses: zaproxy/action-baseline@v0.14.0 - Spider
+# Passive Scan
      
 
 #  OWASP ZAP Action use 
@@ -39,6 +42,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://preview.owasp-juice.shop/'
           rules_file_name: 'rules.tsv'
+          # rules_file_name: 'zap/rules.tsv'
+  #         with:
+  # target: ${{ env.TARGET_URL }}
+  # cmd_options: "-m 10"  spider maximum duration 10 minutes
+
+
 # Rule Enable
 
 # Rule Disable
